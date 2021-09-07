@@ -4,7 +4,7 @@ require('dotenv').config()
 const helpers = require("./helpers");
 const OUATH = process.env.OUATH;
 
-const me = 'drummer10251'
+const me = process.env.ME;
 
 const client = new tmi.Client({
     connection: {
@@ -15,9 +15,8 @@ const client = new tmi.Client({
         username: me,
         password: OUATH
     },
-    channels: ["eddboiii"]
+    channels: []
 });
-//'eddboiii', "m0wgliii_","rambang", "jenASTRA", "bIanksky","danwitdaplan_"
 client.connect();
 
 const name = 'display-name'
@@ -32,7 +31,8 @@ client.on('message', async (channel, tags, message, self) => {
         if (message === banHammer) {
             for (let name of helpers.list) {
                 client.say(channel, `/ban ${name}`)
-                await helpers.sleep(500)
+                .catch(err => console.log(err))
+                await helpers.sleep(200)
             }
             console.log("Donezo")
         }
@@ -43,11 +43,11 @@ client.on('message', async (channel, tags, message, self) => {
            
             for(let i = 0; i <= num; i++){
                 client.say(channel,`${emote.repeat(i + 1)}`)
-                await helpers.sleep(300)
+                await helpers.sleep(200)
             }
             for(let i = num - 1; i >=0; i--){
                 client.say(channel, `${emote.repeat(i + 1)}`)
-                await helpers.sleep(300)
+                await helpers.sleep(200)
             }
         }
     }
