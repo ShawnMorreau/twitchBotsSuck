@@ -6,6 +6,7 @@ If you would like to use this you'll need:
         Unless you plan on hosting this, you don't need to do this then you can put the values directly into the code. I just did this as a privacy matter. 
     - Add the channel(s) you wish to attach the bot to
     - Download Node.
-    - Run node index.js when in the directory.
+    - Run npm i when in the directory.
+    - Run node index.js.
     - Go into that channel's chat and run !doTheThing
 
