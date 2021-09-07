@@ -4,13 +4,15 @@ require('dotenv').config()
 const helpers = require("./helpers");
 const OUATH = process.env.OUATH;
 
+const me = 'drummer10251'
+
 const client = new tmi.Client({
     connection: {
         secure: true,
         reconnect: true
     },
     identity: {
-        username: 'drummer10251',
+        username: me,
         password: OUATH
     },
     channels: ["eddboiii"]
@@ -18,10 +20,11 @@ const client = new tmi.Client({
 //'eddboiii', "m0wgliii_","rambang", "jenASTRA", "bIanksky","danwitdaplan_"
 client.connect();
 
-const me = 'drummer10251'
 const name = 'display-name'
+/*
+    If I start adding more commands, I'll likely create a commands object to store them
+*/
 const banHammer = "!doTheThing"
-const test = "test"
 const pyramid = "!p"
 client.on('message', async (channel, tags, message, self) => {
     if (self) return;
@@ -47,10 +50,6 @@ client.on('message', async (channel, tags, message, self) => {
                 await helpers.sleep(300)
             }
         }
-        // if (message === "raid") {
-        //     const msg = "eddboiWorkit BOATHOUSE RAID eddboiTwerkk eddboiBoatyycute eddboiWorkit"
-        //     client.say(channel, msg)
-        // }
     }
     if(message.includes("cutt.ly/")){
         client.say(channel, `/ban ${tags[name]}`)
