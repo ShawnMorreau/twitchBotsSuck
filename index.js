@@ -23,7 +23,6 @@ const client = new tmi.Client({
 });
 client.connect();
 
-const name = 'display-name'
 const banHammer = "!doTheThing"
 
 const bots = {
@@ -36,11 +35,12 @@ const bots = {
     lunar: "lunar_"
 }
 client.on('message', async (channel, tags, message, self) => {
+    const name = tags['display-name']
     if (self) return;
-    if (tags[name] === me) {
+    if (name === me) {
         if (message === banHammer) {
-            for (let name of helpers.list) {
-                client.say(channel, `/ban ${name}`)
+            for (let id of helpers.list) {
+                client.say(channel, `/ban ${id}`)
                     .catch(err => console.log(err))
                 await helpers.sleep(350)
 
@@ -49,17 +49,21 @@ client.on('message', async (channel, tags, message, self) => {
         }
     }
 
-    if (tags[name] === streamEle || tags[name] === streamLab) {
+    if (name === streamEle || name === streamLab) {
         message = message.toLowerCase()
-        if (tags[name] === streamLab) {
+        if (name === streamLab) {
+            /*
+                For the streams I'm doing this in, some have a StreamLabs following 
+                message that concats a ! at the end of the message
+            */
             message = message.substring(0, message.length - 1)
         }
-        for (let key in bots) {
-            if (message.includes(bots[key])) {
-                message = message.split(" ")
+        if (message.includes(bots[key])) {
+            message = message.split(" ")
+            for (let key in bots) {
                 for (let word in message) {
                     if (message[word].includes(bots[key])) {
-                        console.log(`trying to ban ${message[word]}`)
+                        console.log(`${message[word]}`)
                         client.say(channel, `/ban ${message[word]}`)
                         // updateNewList(message[word])
                         break
@@ -69,11 +73,12 @@ client.on('message', async (channel, tags, message, self) => {
         }
     }
     if (message.includes("cutt.ly/")) {
-        client.say(channel, `/ban ${tags[name]}`)
-        console.log(`Get rekt ${tags[name]}`)
+        client.say(channel, `/ban ${name}`)
+        console.log(`Get rekt ${name}`)
         await helpers.sleep(100)
     }
 })
+// attempt at automation, for adding all the bots caught in my autoban
 // const updateNewList = (bot) => {
 //     fs.readFile('bots.json', 'utf8', function readFileCallback(err, data) {
 //         if (err) {
