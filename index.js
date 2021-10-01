@@ -1,5 +1,6 @@
 
 const tmi = require('tmi.js');
+const { followBotExtractor } = require('./followBotExtractor');
 require('dotenv').config()
 const {sleep} = require("./helpers");
 const {hossList,dumbBots,notMyList} = require("./lists")
@@ -8,6 +9,7 @@ const OUATH = process.env.OUATH;
 const me = process.env.ME;
 const streamEle = "StreamElements";
 const streamLab = "Streamlabs";
+const botJSON = require("./bots.json")
 
 const client = new tmi.Client({
     connection: {
@@ -40,7 +42,6 @@ client.on('message', async (channel, tags, message, self) => {
     const name = tags['display-name']
     if (self) return;
     if (name === me) {
-        console.log(message)
         switch (message) {
             case "!doTheThing":
                 banList(notMyList, channel)
@@ -50,6 +51,11 @@ client.on('message', async (channel, tags, message, self) => {
                 break
             case "!btb":
                 banList(dumbBots, channel)
+                break
+            case "!banEm":
+                console.log(botJSON.bots)
+                await followBotExtractor()
+                banList(botJSON.bots, channel)
                 break
             default:
                 console.log("HuH")
@@ -73,7 +79,6 @@ const banList = async (list, channel) => {
     console.log("Started")
     for (let id of list) {
         client.say(channel, `/ban ${id}`)
-            .catch(err => console.log(err))
         await sleep(350)
     }
     console.log("Donezo")

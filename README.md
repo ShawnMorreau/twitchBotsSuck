@@ -10,3 +10,5 @@ If you would like to use this you'll need:
     - Run node index.js.
     - Go into that channel's chat and run !doTheThing
 
+Added in followBotExtractor. Allows me to copy paste a wall of follow bots(since they
+have begun adding new ones in), gather their name into a list and then use !banEm in the channel I'm modding.
