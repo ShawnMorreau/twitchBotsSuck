@@ -251,7 +251,6 @@ const notMyList = [
   "aitorki_24",
   "akromatirel",
   "AlexiaXo",
-  "alexratman",
   "alfredhitchco",
   "aliengathering",
   "allison_kjell",
