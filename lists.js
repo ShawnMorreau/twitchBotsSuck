@@ -873,6 +873,16 @@ const notMyList = [
   "zenmatevpn",
 ];
 const dumbBots = [
+  "Gowithhim",
+  "Sophikal",
+  "Squishiibutt",
+  "gabe_daery",
+  "alvinstreambstuff",
+  "ftewiuh",
+  "chaddieisanicenaee",
+  "Extramoar",
+  "Tinarif",
+  "Ergolta",
   "Drlucylove",
   "Jointeffortt",
   "Ehrabz",

@@ -57,8 +57,6 @@ client.on('message', async (channel, tags, message, self) => {
                 await followBotExtractor()
                 banList(botJSON.bots, channel)
                 break
-            default:
-                console.log("HuH")
         }
     }
     else if (name === streamEle) {
@@ -69,6 +67,7 @@ client.on('message', async (channel, tags, message, self) => {
                 message = message.split(" ")
                 console.log(`${message[nameIdx]}`)
                 client.say(channel, `/ban ${message[nameIdx]}`)
+                client.say("4bo0m", `/ban ${message[nameIdx]}`)
                 break
             }
         }

@@ -50,18 +50,3 @@ module.exports = {
 }
 
 // followBotExtractor()
-/*
-ModeratorVerifiedStreamElements:Thank you for following gunu5 :) I appreciate the support.
-
-11:53
-
-ModeratorVerifiedStreamElements:Thank you for following gunl6 :) I appreciate the support.
-
-11:55
-
-ModeratorVerifiedStreamElements:Thank you for following gunq3 :) I appreciate the support.
-
-11:56
-
-ModeratorVerifiedStreamElements:Thank you for following gunp5 :) I appreciate the support.
-*/
