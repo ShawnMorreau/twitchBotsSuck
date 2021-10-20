@@ -20,8 +20,8 @@ const client = new tmi.Client({
         username: me,
         password: OUATH
     },
-    channels: []
-
+    channels: ["jenastra","m0wgliii_","eddboiii","rambang"]
+// "danwitdaplan_"
 });
 client.connect();
 
