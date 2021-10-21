@@ -72,6 +72,10 @@ client.on('message', async (channel, tags, message, self) => {
             }
         }
     }
+    //can't keep appending otherwise it will get too cluttered. likely do it as a map again
+    else if(message.includes("guardlink.org/") || message.includes("vk.cc/")){
+        client.say(channel, `/ban ${message[name]}`)
+    }
 })
 
 const banList = async (list, channel) => {
@@ -81,4 +85,4 @@ const banList = async (list, channel) => {
         await sleep(350)
     }
     console.log("Donezo")
-  }
+}
